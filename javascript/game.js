@@ -3,6 +3,32 @@ const ctx = canvas.getContext('2d');
 
 const player = new Player(50, canvas.height / 2, 20, 5);
 
+
+const obstacles = [];
+
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function createCodeBlocks() {
+  const y = randomNumber(0, canvas.height - 20);
+  const width = 150;
+  const height = 50;
+  const speed = 1;
+
+  if (Math.random() < 0.5) {
+    obstacles.push(new CodeBlock(canvas.width, y, width, height, speed, 'good'));
+  } else {
+    obstacles.push(new CodeBlock(canvas.width, y, width, height, speed, 'bad'));
+  }
+
+  setTimeout(createCodeBlocks, randomNumber(3000, 8000));
+}
+
+
+
 function showScreen(id) {
   const screens = document.querySelectorAll('section');
   screens.forEach(function (screen) {
@@ -38,20 +64,27 @@ window.addEventListener('keyup', function(e) {
 
 document.getElementById('startGameButton').addEventListener('click', function() {
   showScreen('game-screen');
-  animate();
+  createCodeBlocks();
+  gameLoop();
 });
 
 document.getElementById('restartGameButton').addEventListener('click', function() {
   showScreen('game-screen');
-  animate();
+  obstacles.length = 0;
+  createCodeBlocks();
+  gameLoop();
 });
 
-function animate() {
-  requestAnimationFrame(animate);
+function gameLoop() {
+  requestAnimationFrame(gameLoop);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Need to add the good / bad code actions
-  
+  for (let i = 0; i < obstacles.length; i++) {
+    const obstacle = obstacles[i];
+    obstacle.update();
+    obstacle.draw(ctx);
+  }
+
   player.update();
   player.draw(ctx);
 }

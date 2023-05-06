@@ -11,12 +11,13 @@ class Player {
     if (this.y + this.radius + this.dy > canvas.height || this.y - this.radius + this.dy < 0) {
       this.dy = 0;
     }
-
-    this.y += this.dy;
+    else {
+      this.y += this.dy;
+    }
   }
 
   draw(ctx) {
-    ctx.drawImage(playerImage, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+    ctx.drawImage(playerImage, this.x - this.radius, this.y - this.radius, 156/4, 238/4);
   }
 }
 

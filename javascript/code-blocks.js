@@ -1,26 +1,82 @@
-let goodCodeImage = new Image();
-goodCodeImage.src = 'images/good.png';
-
-let badCodeImage = new Image();
-badCodeImage.src = 'images/bad.png';
-
 class CodeBlock {
-  constructor() {
-		this.goodImagesArray = []
-		this.badImagesArray = []
-  }
+  constructor(x, y, width, height, speed, type) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.speed = speed;
+    this.type = type;
 
-  for (let i = 0; i < this.maxGoodImages; i++) {
-    this.goodImagesArray.push(`images/good_code${i}.png`)
+    let codeSamples;
+    if (this.type === 'good') {
+      codeSamples = goodCode;
+    } else {
+      codeSamples = badCode;
+    }
+    this.text = codeSamples[Math.floor(Math.random() * codeSamples.length)];
   }
 
   update() {
-
+    this.x -= this.speed;
   }
 
   draw(ctx) {
-    ctx.drawImage();
+    if (this.type === 'good') {
+      ctx.fillStyle = 'grey';
+      console.log("GOOD");
+    } else {
+      ctx.fillStyle = 'grey';
+      console.log("BAD");
+    }
+
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+
+    ctx.fillStyle = 'white';
+    ctx.font = '16px San Francisco Mono';
+    ctx.fillText(this.text, this.x + 10, this.y + 20);
   }
 }
 
+
+const goodCode = [
+  // HTML [0 - 4]
+  '<h1>Extra!</h1>',
+  '<img src="image.jpg" alt="Description">',
+  '<strong>Bold</strong>',
+  '<input type="checkbox" id="checkbox">',
+  '<a href="www.cnn.uk">Link</a>',
+  // CSS [5 - 9]
+  'color: red;',
+  'background-color: gray;',
+  'font-size: 24px;',
+  'text-align: center;',
+  'border: 1px solid black;',
+  // JavaScript [10 - 14]
+  'const name = "John";',
+  'let array = [1, 2, 3];',
+  'console.log(`The cost is ${num}`);',
+  'let myAge = 30;',
+  'if (age >= 18){console.log("You are an adult.")};'
+];
+
+const badCode = [
+  // HTML
+  '<a herf="www.cnn.uk">Link</a>',
+  '<button>Click me</buttom>',
+  '<text arearows="4" areacols="50"></textarea>',
+  '<img scr="image.jpg" alt="Description">',
+  '<ul><li>item<li></ul>',
+  // CSS
+  'color: redish',
+  'padding: 10',
+  'fomt-size: 14px',
+  'display: nonepx',
+  'padding: 10px 5px 15',
+  // JavaScript
+  'Const userName',
+  'console.log("The cost is ${num}")',
+  'let lastName = Doe',
+  'const person = ["name": "John", "age": 30]',
+  'let char = "Ironman"'
+];
 
