@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Syntax Surivor Game</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- Start Screen -------------------------------------------------------- -->
+
+    <section id="start-screen">
+        <h1>Syntax Survivor</h1>
+        <p>What's more fun than playing computer games? Games that test your knowledge of programming syntax of course!</p>
+        <h1>How to play</h1>
+        <div>
+            <ol>
+                <li>Use the arrow keys to move your character in two directions: up and down</li>
+                <li>Collect correct syntax "tokens" and avoid incorrect ones</li>
+                <li>If you hit an incorrect JavaScript token, that's game over</li>
+                <li>It's that simple! Click the button below to start the game</li>
+            </ol>
+        </div>
+        <button id="startGameButton">Start Game</button>
+    </section>
+
+<!-- Play Game Screen -------------------------------------------------------- -->
+
+    <section id="game-screen">
+        <div id="canvas-container">
+            <canvas id="canvas" width="500" height="500"></canvas>
+        </div>
+    </section>
+
+<!-- Game Over Screen -------------------------------------------------------- -->
+
+    <section id="game-over-screen">
+        <h1>Game Over!</h1>
+        <h2 id="finalScore">Score: 0</h2>
+        <button id="restartGameButton">Play Again</button>
+    </section>
+
+    <script src="javascript/player.js"></script>
+    <script src="javascript/code-blocks.js"></script>
+    <script src="javascript/game.js"></script>
+</body>
+</html>
