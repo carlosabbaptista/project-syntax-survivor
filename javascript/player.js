@@ -1,25 +1,28 @@
+let playerImage = new Image();
+playerImage.src = 'images/player-image.png';
+
+
 class Player {
-  constructor(x, y, radius, speed) {
+  constructor(x, y, width, height, speed) {
     this.x = x;
     this.y = y;
-    this.radius = radius;
+    this.width = width;
+    this.height = height;
     this.speed = speed;
     this.dy = 0;
   }
 
   update() {
-    if (this.y + this.radius + this.dy > canvas.height || this.y - this.radius + this.dy < 0) {
+    if (this.y + this.height + this.dy > canvas.height || this.y + this.dy < 0) {
       this.dy = 0;
     }
     else {
       this.y += this.dy;
     }
   }
-
+  
   draw(ctx) {
-    ctx.drawImage(playerImage, this.x - this.radius, this.y - this.radius, 156/4, 238/4);
+    ctx.drawImage(playerImage, this.x, this.y, this.width, this.height);
   }
-}
 
-let playerImage = new Image();
-playerImage.src = 'images/player-image.png';
+}

@@ -32,8 +32,10 @@ class CodeBlock {
     ctx.fillRect(this.x, this.y, this.width, this.height);
 
     ctx.fillStyle = 'white';
-    ctx.font = '16px San Francisco Mono';
+    ctx.font = '16px Arial';
     ctx.fillText(this.text, this.x + 10, this.y + 20);
+    const textWidth = ctx.measureText(this.text).width;
+    this.width = textWidth + 20;
   }
 }
 
@@ -60,19 +62,19 @@ const goodCode = [
 ];
 
 const badCode = [
-  // HTML
+  // HTML [0 - 4]
   '<a herf="www.cnn.uk">Link</a>',
   '<button>Click me</buttom>',
   '<text arearows="4" areacols="50"></textarea>',
   '<img scr="image.jpg" alt="Description">',
   '<ul><li>item<li></ul>',
-  // CSS
+  // CSS [5 - 9]
   'color: redish',
   'padding: 10',
   'fomt-size: 14px',
   'display: nonepx',
   'padding: 10px 5px 15',
-  // JavaScript
+  // JavaScript [10 - 14]
   'Const userName',
   'console.log("The cost is ${num}")',
   'let lastName = Doe',
