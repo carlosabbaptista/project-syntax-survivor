@@ -5,6 +5,11 @@ const ctx = canvas.getContext('2d');
 let isGameRunning = true;
 let score = 0;
 let lives = 3;
+const goodCollisionSound = new Audio('sounds/good-collision.wav');
+const badCollisionSound = new Audio('sounds/bad-collision.wav');
+const gameOverSound = new Audio('sounds/game-over.wav');
+// Add sound for start game/restart game
+// Add sound for background music
 
 const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
 const obstacles = [];
@@ -74,6 +79,7 @@ function detectCollision(player, obstacle) {
     console.log('good collision');
     obstacle.collided = true;
     addScore();
+    goodCollisionSound.play();
   }
   else if (
     obstacle.collided === false &&
@@ -86,6 +92,7 @@ function detectCollision(player, obstacle) {
     console.log('bad collision');
     obstacle.collided = true;
     loseLife();
+    badCollisionSound.play();
   }
 }
 
@@ -183,13 +190,14 @@ function gameLoop() {
     detectCollision(player, obstacle);
   });
 
-    if (lives === 0) {
+  if (lives === 0) {
     const gameOverScreen = document.getElementById('game-over-screen');
     const gameScreen = document.getElementById('game-screen');
     gameOverScreen.style.display = 'block';
     gameScreen.style.display = 'none';
     isGameRunning = false;
     displayFinalScore();
+    gameOverSound.play();
   }
   
   player.update();
