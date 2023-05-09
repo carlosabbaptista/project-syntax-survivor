@@ -7,8 +7,8 @@ let score = 0;
 let lives = 3;
 
 const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
-
 const obstacles = [];
+let canvasSections = [0, 1, 2, 3, 4];
 
 // function for random number generation
 
@@ -19,18 +19,28 @@ function randomNumber(min, max) {
 // function for creating the codeBlock obstacles
 
 function createCodeBlocks() {
-  const y = randomNumber(0, canvas.height - 20);
-  const width = 300;
   const height = 30;
   const speed = 1;
+  const numberOfSections = 5;
+
+  const sectionHeight = canvas.height / numberOfSections;
+
+  const randomIndex = Math.floor(Math.random() * canvasSections.length);
+  const sectionNumber = canvasSections[randomIndex];
+  canvasSections.splice(randomIndex, 1)
+  let y = sectionNumber * sectionHeight;
 
   if (Math.random() < 0.5) {
-    obstacles.push(new CodeBlock(canvas.width, y, width, height, speed, 'good', ctx));
+    obstacles.push(new CodeBlock(canvas.width, y, 0, height, speed, 'good', ctx));
   } else {
-    obstacles.push(new CodeBlock(canvas.width, y, width, height, speed, 'bad', ctx));
+    obstacles.push(new CodeBlock(canvas.width, y, 0, height, speed, 'bad', ctx));
   }
 
-  setTimeout(createCodeBlocks, randomNumber(3000, 8000));
+  if (canvasSections.length === 0) {
+    canvasSections = [0, 1, 2, 3, 4];
+  }
+
+  setTimeout(createCodeBlocks, randomNumber(5000, 8000));
 }
 
 // function for screen selection
@@ -77,7 +87,6 @@ function detectCollision(player, obstacle) {
     obstacle.collided = true;
     loseLife();
   }
-  
 }
 
 // function for adding the player's score
@@ -107,6 +116,8 @@ function updateLives() {
   const displayLives = document.getElementById('displayLives');
   displayLives.textContent = `Lives: ${lives}`;
 }
+
+// function displaying final score
 
 function displayFinalScore() {
   const finalScore = document.getElementById('finalScore');

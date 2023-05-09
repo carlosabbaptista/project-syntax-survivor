@@ -22,12 +22,14 @@ class CodeBlock {
   }
 
   draw(ctx) {
-    if (this.type === 'good') {
-      ctx.fillStyle = 'grey';
-      console.log("GOOD");
+    if (this.collided) {
+      if (this.type === 'good') {
+        ctx.fillStyle = 'green';
+      } else {
+        ctx.fillStyle = 'red';
+      }
     } else {
       ctx.fillStyle = 'grey';
-      console.log("BAD");
     }
 
     ctx.fillRect(this.x, this.y, this.width, this.height);
