@@ -1,7 +1,6 @@
 let playerImage = new Image();
 playerImage.src = 'images/player-image.png';
 
-
 class Player {
   constructor(x, y, width, height, speed) {
     this.x = x;

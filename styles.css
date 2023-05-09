@@ -1,4 +1,87 @@
-#canvas {
-    border: 3px solid black;
-  }
+/* start-screen */
 
+#start-screen {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background-color: #0d0c4a;
+}
+
+h1 {
+  font-family: 'VT323', monospace;
+  text-shadow: 4px 4px 0px #ee03dc;
+  font-size: 50px;
+  color: #f5e200;
+}
+
+h2 {
+  font-family: 'VT323', monospace;
+  text-shadow: 4px 4px 0px #ee03dc;
+  font-size: 30px;
+  color: #f5e200;
+}
+
+li {
+  font-family: 'VT323', monospace;
+  color: white;
+}
+
+p {
+  font-family: 'VT323', monospace;
+  color: white;
+}
+
+#startGameButton {
+  font-family: 'VT323', monospace;
+  color: white;
+  background-color: #c6017f;
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  box-shadow: 5px 5px 0px #8f016e
+}
+
+/* game-screen */
+
+#canvas {
+  border: 2px solid white;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#game-info {
+  font-family: 'VT323', monospace;
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 85%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+/* game-over-screen */
+
+#restartGameButton {
+  font-family: 'VT323', monospace;
+  color: white;
+  background-color: #c6017f;
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  box-shadow: 5px 5px 0px #8f016e
+}
+
+#game-over-screen {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

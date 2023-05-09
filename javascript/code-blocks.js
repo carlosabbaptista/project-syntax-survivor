@@ -6,6 +6,7 @@ class CodeBlock {
     this.height = height;
     this.speed = speed;
     this.type = type;
+    this.collided = false;
 
     let codeSamples;
     if (this.type === 'good') {
@@ -32,7 +33,7 @@ class CodeBlock {
     ctx.fillRect(this.x, this.y, this.width, this.height);
 
     ctx.fillStyle = 'white';
-    ctx.font = '16px Arial';
+    ctx.font = '16px Courier Prime';
     ctx.fillText(this.text, this.x + 10, this.y + 20);
     const textWidth = ctx.measureText(this.text).width;
     this.width = textWidth + 20;

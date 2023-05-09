@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- Start Screen -------------------------------------------------------- -->
 
     <section id="start-screen">
-        <h1>Syntax Survivor</h1>
+        <h1>SYNTAX SURVIVOR</h1>
         <p>What's more fun than playing computer games? Games that test your knowledge of programming syntax of course!</p>
-        <h1>How to play</h1>
+        <h2>How to play</h1>
         <div>
             <ol>
                 <li>Use the arrow keys to move your character in two directions: up and down</li>
@@ -23,12 +25,16 @@
                 <li>It's that simple! Click the button below to start the game</li>
             </ol>
         </div>
-        <button id="startGameButton">Start Game</button>
+        <button id="startGameButton">START GAME</button>
     </section>
 
 <!-- Play Game Screen -------------------------------------------------------- -->
 
     <section id="game-screen">
+        <div id="game-info">
+            <span id="displayScore">Score: 0</span>
+            <span id="displayLives">Lives: 3</span>
+        </div>
         <div id="canvas-container">
             <canvas id="canvas" width="800" height="500"></canvas>
         </div>
