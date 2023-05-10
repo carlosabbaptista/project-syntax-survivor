@@ -7,9 +7,13 @@ let score = 0;
 let lives = 3;
 const goodCollisionSound = new Audio('sounds/good-collision.wav');
 const badCollisionSound = new Audio('sounds/bad-collision.wav');
+badCollisionSound.volume = 1.0;
 const gameOverSound = new Audio('sounds/game-over.wav');
+const backgroundMusic = new Audio('sounds/background-music-1.wav');
+backgroundMusic.volume = 0.25;
+const audioOnButton = document.getElementById('audio-on');
+const audioOffButton = document.getElementById('audio-off');
 // Add sound for start game/restart game
-// Add sound for background music
 
 const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
 const obstacles = [];
@@ -176,6 +180,24 @@ document.getElementById('restartGameButton').addEventListener('click', function(
   gameLoop();
 });
 
+// event listeners for audio on/off buttons
+
+audioOnButton.addEventListener('click', function() {
+  badCollisionSound.muted = false;
+  goodCollisionSound.muted = false;
+  backgroundMusic.muted = false;
+  audioOnButton.style.display = 'none';
+  audioOffButton.style.display = 'block';
+});
+
+audioOffButton.addEventListener('click', function() {
+  badCollisionSound.muted = true;
+  goodCollisionSound.muted = true;
+  backgroundMusic.muted = true;
+  audioOffButton.style.display = 'none';
+  audioOnButton.style.display = 'block';
+});
+
 // game loop function
 
 function gameLoop() {
@@ -183,6 +205,8 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
   }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  backgroundMusic.play();
 
   obstacles.forEach(obstacle => {
     obstacle.update();

@@ -1,10 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* start-screen */
 
 #start-screen {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 550px;
 }
 
 body {
@@ -14,25 +21,37 @@ body {
 h1 {
   font-family: 'VT323', monospace;
   text-shadow: 4px 4px 0px #ee03dc;
-  font-size: 50px;
+  font-size: 85px;
   color: #f5e200;
+  padding-bottom: 10px;
 }
 
 h2 {
   font-family: 'VT323', monospace;
   text-shadow: 4px 4px 0px #ee03dc;
-  font-size: 30px;
+  font-size: 50px;
   color: #f5e200;
+  padding-bottom: 10px;
+  margin-left: 140px;
+}
+
+ol {
+  padding-left: 25px;
+  padding-bottom: 20px;
 }
 
 li {
   font-family: 'VT323', monospace;
   color: white;
+  padding-bottom: 5px;
+  font-size: 20px;
 }
 
 p {
   font-family: 'VT323', monospace;
   color: white;
+  font-size: 25px;
+  padding-bottom: 25px;
 }
 
 #startGameButton {
@@ -43,10 +62,18 @@ p {
   height: 30px;
   font-size: 20px;
   border: none;
-  box-shadow: 5px 5px 0px #8f016e
+  box-shadow: 5px 5px 0px #8f016e;
+  margin-left: 150px;
 }
 
 /* game-screen */
+
+#game-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
 #canvas {
   border: 2px solid white;
@@ -58,12 +85,30 @@ p {
 
 #game-info {
   font-family: 'VT323', monospace;
-  font-size: 30px;
+  font-size: 25px;
   color: white;
   position: absolute;
-  top: 85%;
-  left: 70%;
+  top: 84%;
+  left: 71%;
   transform: translate(-50%, -50%);
+}
+
+#displayLives {
+  padding-left: 20px;
+}
+
+#audio-on, #audio-off {
+  position: absolute;
+  left: 320px;
+  bottom: 100px;
+  font-family: 'VT323', monospace;
+  color: white;
+  background-color: #c6017f;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  box-shadow: 5px 5px 0px #8f016e
 }
 
 /* game-over-screen */
@@ -84,4 +129,13 @@ p {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#finalScore {
+  margin-left: 70px;
+  padding-bottom: 25px;
+}
+
+#restartGameButton {
+  margin-left: 60px;
 }

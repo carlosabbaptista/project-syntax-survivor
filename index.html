@@ -19,9 +19,10 @@
         <h2>How to play</h1>
         <div>
             <ol>
-                <li>Use the arrow keys to move your character in two directions: up and down</li>
-                <li>Collect correct syntax "tokens" and avoid incorrect ones</li>
-                <li>If you hit an incorrect JavaScript token, that's game over</li>
+                <li>Use the up and down arrow keys to move the player</li>
+                <li>Collect syntax "tokens" with the correct syntax to gain points</li>
+                <li>Avoid syntax "tokens" with the incorrect syntax, or lose a life</li>
+                <li>The game is over when you lose all lives</li>
                 <li>It's that simple! Click the button below to start the game</li>
             </ol>
         </div>
@@ -37,6 +38,10 @@
         </div>
         <div id="canvas-container">
             <canvas id="canvas" width="800" height="500"></canvas>
+        </div>
+        <div id="button-container">
+            <button id="audio-off" class="audio-btn">AUDIO OFF</button>
+            <button id="audio-on" class="audio-btn" style="display: none;">AUDIO ON</button>
         </div>
     </section>
 
