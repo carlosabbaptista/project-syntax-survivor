@@ -4,7 +4,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let isGameRunning = true;
 let score = 0;
-let lives = 3;
+let lives = 5;
 const goodCollisionSound = new Audio('sounds/good-collision.wav');
 const badCollisionSound = new Audio('sounds/bad-collision.wav');
 badCollisionSound.volume = 1.0;
@@ -112,6 +112,12 @@ function loseLife() {
   updateLives();
 }
 
+function loseLifeOffScreen(obstacle) {
+  if (obstacle.collided === false && obstacle.type === "good" && obstacle.x === 0) {
+    loseLife();
+  }
+}
+
 // function displaying score
 
 function updateScore() {
@@ -210,6 +216,7 @@ function gameLoop() {
     obstacle.update();
     obstacle.draw(ctx);
     detectCollision(player, obstacle);
+    loseLifeOffScreen(obstacle);
   });
 
   if (lives === 0) {
