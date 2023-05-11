@@ -68,39 +68,39 @@ p {
 
 /* game-screen */
 
-#game-container {
+#game-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#canvas-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #canvas {
   border: 2px solid white;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 50px;
 }
 
 #game-info {
   font-family: 'VT323', monospace;
-  font-size: 25px;
+  font-size: 30px;
   color: white;
-  position: absolute;
-  top: 84%;
-  left: 71%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  padding-top: 20px;
 }
 
-#displayLives {
-  padding-left: 20px;
+#button-container {
+  position: relative;
+  padding-top: 20px;
 }
 
-#audio-on, #audio-off {
-  position: absolute;
-  left: 320px;
-  bottom: 100px;
+.audio-btn {
   font-family: 'VT323', monospace;
   color: white;
   background-color: #c6017f;
@@ -108,7 +108,7 @@ p {
   height: 30px;
   font-size: 20px;
   border: none;
-  box-shadow: 5px 5px 0px #8f016e
+  box-shadow: 5px 5px 0px #8f016e;
 }
 
 /* game-over-screen */
