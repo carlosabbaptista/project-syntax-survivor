@@ -221,6 +221,7 @@ function gameLoop() {
     backgroundMusic.muted = true;
     displayFinalScore();
     gameOverSound.play();
+    obstacles.length = 0;
   }
   
   player.update();
