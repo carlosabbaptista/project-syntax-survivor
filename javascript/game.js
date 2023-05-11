@@ -13,8 +13,6 @@ const backgroundMusic = new Audio('sounds/background-music-1.wav');
 backgroundMusic.volume = 0.25;
 const audioOnButton = document.getElementById('audio-on');
 const audioOffButton = document.getElementById('audio-off');
-// Add sound for start game/restart game
-
 const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
 const obstacles = [];
 let canvasSections = [0, 1, 2, 3, 4];
@@ -220,6 +218,7 @@ function gameLoop() {
     gameOverScreen.style.display = 'block';
     gameScreen.style.display = 'none';
     isGameRunning = false;
+    backgroundMusic.muted = true;
     displayFinalScore();
     gameOverSound.play();
   }
