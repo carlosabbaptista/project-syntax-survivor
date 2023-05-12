@@ -1,10 +1,19 @@
-// game initialization
+// canvas initialization
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+
+// game initialization
+
 let isGameRunning = true;
 let score = 0;
-let lives = 5;
+let lives = 3;
+const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
+const obstacles = [];
+let canvasSections = [0, 1, 2, 3, 4];
+
+// sounds initialization
+
 const goodCollisionSound = new Audio('sounds/good-collision.wav');
 const badCollisionSound = new Audio('sounds/bad-collision.wav');
 badCollisionSound.volume = 1.0;
@@ -13,9 +22,6 @@ const backgroundMusic = new Audio('sounds/background-music-1.wav');
 backgroundMusic.volume = 0.25;
 const audioOnButton = document.getElementById('audio-on');
 const audioOffButton = document.getElementById('audio-off');
-const player = new Player(50, canvas.height / 2 - (238 / 4) / 2, 156 / 4, 238 / 4, 5);
-const obstacles = [];
-let canvasSections = [0, 1, 2, 3, 4];
 
 // function for random number generation
 
@@ -24,6 +30,8 @@ function randomNumber(min, max) {
 }
 
 // function for creating the codeBlock obstacles
+
+let obstacleTimeout;
 
 function createCodeBlocks() {
   const height = 30;
@@ -47,10 +55,10 @@ function createCodeBlocks() {
     canvasSections = [0, 1, 2, 3, 4];
   }
 
-  setTimeout(createCodeBlocks, randomNumber(5000, 8000));
+  obstacleTimeout = setTimeout(createCodeBlocks, randomNumber(5000, 8000));
 }
 
-// function for screen selection
+// function for screen selection - changes the visible screen based on the id
 
 function showScreen(id) {
   const screens = document.querySelectorAll('section');
@@ -115,6 +123,7 @@ function loseLife() {
 function loseLifeOffScreen(obstacle) {
   if (obstacle.collided === false && obstacle.type === "good" && obstacle.x === 0) {
     loseLife();
+    badCollisionSound.play();
   }
 }
 
@@ -167,6 +176,7 @@ document.getElementById('startGameButton').addEventListener('click', function() 
   showScreen('game-screen');
   createCodeBlocks();
   isGameRunning = true;
+  backgroundMusic.play();
   gameLoop();
 });
 
@@ -181,6 +191,7 @@ document.getElementById('restartGameButton').addEventListener('click', function(
   updateLives();
   score = 0;
   updateScore();
+  backgroundMusic.muted = false;
   gameLoop();
 });
 
@@ -202,7 +213,7 @@ audioOffButton.addEventListener('click', function() {
   audioOnButton.style.display = 'block';
 });
 
-// game loop function
+// main game loop function continously called using requestAnimationFrame while game is running
 
 function gameLoop() {
   if (isGameRunning) {
@@ -225,6 +236,7 @@ function gameLoop() {
     gameOverScreen.style.display = 'block';
     gameScreen.style.display = 'none';
     isGameRunning = false;
+    clearTimeout(obstacleTimeout);
     backgroundMusic.muted = true;
     displayFinalScore();
     gameOverSound.play();

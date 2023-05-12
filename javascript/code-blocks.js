@@ -82,6 +82,6 @@ const badCode = [
   'console.log("The cost is ${num}")',
   'let lastName = Doe',
   'const person = ["name": "John", "age": 30]',
-  'let char = "Ironman"'
+  'let char = Ironman"'
 ];
 
