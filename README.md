@@ -44,4 +44,4 @@ The HTML file serves as the main structure for the game and includes three main 
 
 ## Play Syntax Survivor
 
-[Play the game here](https://ollie-j-j.github.io/project-syntax-survivor/)
+[Play the game here](https://carlosabbaptista.github.io/project-syntax-survivor/)
